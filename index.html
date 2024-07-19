@@ -37,32 +37,92 @@
         <div class="weatherOutput position-fixed p-5">
             <h2 class="heading">Today's Weather Updates</h2>
             <div class="updates">
-                <div class="humidity d-grid align-items-center justify-content-center text-center">
+                <div class="card p-4"  style="width: 18rem;">
+                    <h5 class="card-text humidity">Humidity</h5>
+                    <i class="fa-solid fa-water" style="color: rgba(245, 245, 245, 0.865);"></i>
+                    <div class="card-body">
+                        <h1 class="card-title HumidityValue"></h1>
+                    </div>
+                </div>
+                <div class="card p-4" style="width: 18rem;">
+                    <h5 class="card-text humidity">Wind Speed</h5>
+                    <i class="fa-solid fa-wind"  style="color: darkcyan;"></i>
+                    <div class="card-body">
+                        <h1 class="card-title windSpeedValue"></h1>
+                    </div>
+                </div>
+                <div class="card p-2" style="width: 18rem;">
+                    <div class="card-body sun">
+                        <span class="my-3">
+                            <i class="fa-solid fa-sun"  style="color: #f6d245;"></i>
+                            <p><span class="card-title" id="sunRiseValue"></span>Sunrise</p>
+                        </span>
+                        <span class="my-3">
+                            <i class="fa-solid fa-cloud-sun" style="color: #f6d245;"></i>
+                            <p><span class="card-title" id="sunSetValue"></span>Sunset</p>
+                        </span>
+                    </div>
+                </div>
+                <div class="card p-4" style="width: 18rem;">
+                    <h5 class="card-text clouds">Clouds</h5>
+                    <i class="fa-solid fa-cloud" style="color: grey;"></i>
+                    <div class="card-body">
+                        <h1 class="card-title cloudValue"></h1>
+                    </div>
+                </div>
+                <div class="card p-4" style="width: 18rem;">
+                    <h5 class="card-text uv">UV</h5>
+                    <i class="fa-solid fa-bacon" style="color: darkred;"></i>
+                    <div class="card-body">
+                        <h1 class="card-title uvValue"></h1>
+                    </div>
+                </div>
+                <div class="card p-4" style="width: 18rem;">
+                    <h5 class="card-text pressure">Pressure</h5>
+                    <i class="fa-solid fa-volcano" style="color: darkslategrey;"></i>
+                    <div class="card-body">
+                        <h1 class="card-title pressureValue"></h1>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h2 class="heading">5-Day Forecast</h2>
+            <div class="forecast"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
+
+
+<!-- <div class="humidity d-grid align-items-center justify-content-center text-center">
                     humidity
                     <i class="fa-solid fa-water"></i>
                     <h1 id="HumidityValue"></h1>
-                </div>
-                <div class="windSpeed d-grid align-items-center justify-content-center text-center">
+                </div> -->
+<!--  <div class="windSpeed d-grid align-items-center justify-content-center text-center">
                     Wind Speed
                     <i class="fa-solid fa-wind"></i>
                     <h1 id="windSpeedValue"></h1>
-                </div>
-                <div class="sun d-grid align-items-center justify-content-center text-center">
+                </div> -->
+<!-- <div class="sun d-grid align-items-center justify-content-center text-center">
                     <span>
                         <i class="fa-solid fa-sun"></i>
                         <p><span id="sunRiseValue"></span>Sunrise</p>
                     </span>
                     <span>
-                        <i class="fa-solid fa-sun"></i>
+                        <i class="fa-solid fa-cloud-sun"></i>
                         <p><span id="sunSetValue"></span>Sunset</p>
                     </span>
-                </div>
-                <div class="clouds d-grid align-items-center justify-content-center text-center">
+                </div> -->
+<!-- <div class="clouds d-grid align-items-center justify-content-center text-center">
                     Clouds
                     <i class="fa-solid fa-cloud"></i>
                     <h1 id="cloudValue"></h1>
-                </div>
-                <div class="uv d-grid align-items-center justify-content-center text-center">
+                </div> -->
+<!-- <div class="uv d-grid align-items-center justify-content-center text-center">
                     UV
                     <i class="fa-solid fa-bacon"></i>
                     <h1 id="uvValue"></h1>
@@ -71,14 +131,4 @@
                     Pressure
                     <i class="fa-brands fa-wpressr"></i>
                     <h1 id="pressureValue"></h1>
-                </div>
-            </div>
-            <br>
-            <h2 class="heading">5-Day Forecast</h2>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-</body>
-
-</html>
+                </div> -->

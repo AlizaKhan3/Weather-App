@@ -60,6 +60,7 @@ body{
     inset: 0;
     margin-left: 40%;
     background: #fff;
+    overflow: auto;
 }
 
 .updates{
@@ -70,8 +71,20 @@ body{
     column-gap: 10px;
 }
 
-.updates div{
-    height: 100px;
-    display: grid;
+.updates .card{
+    height: 200px;
+    border: none;
+    border-radius: 8px;
+    background-color: #87CEEB;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.162), 0 8px 16px rgba(0, 0, 0, .1);
+} 
+
+.updates i {
+    font-size: 50px;
+}
+
+.sun span{
+    display: flex;
     align-items: center;
+    gap: 30px;
 }
