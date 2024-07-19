@@ -1,0 +1,77 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(fonts/Poppins/Poppins-Regular.ttf);
+}
+
+body{
+    height: 100vh;
+}
+
+/* .container{
+
+} */
+
+.weatherInput{
+    width: 40%;
+    inset: 0;
+    background-color: #87CEEB;
+    padding: 1rem 2.5rem;
+}
+
+.inputGroup{
+    margin: 2rem 0;
+}
+
+.inputGroup input{
+    background: #f8f8f8;
+    text-transform: capitalize;  /* Capitals first letter of every city */
+    padding: 1rem;
+    font-size: 15px;
+    border-radius: 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.inputGroup .convertUnit{
+    right: 45px;
+    border: none;
+    outline: none;
+    font-family: 18px;
+    cursor: pointer;
+}
+
+.inputGroup .fa-magnifying-glass{
+    cursor: pointer;
+    right: 15px;
+    color: #909090;
+    font-size: 20px;
+}
+
+.weatherOutput{
+    width: 60%;
+    inset: 0;
+    margin-left: 40%;
+    background: #fff;
+}
+
+.updates{
+    display: grid;
+    grid-template-columns: repeat(3,350px);
+    grid-auto-flow: row;
+    row-gap: 1rem;
+    column-gap: 10px;
+}
+
+.updates div{
+    height: 100px;
+    display: grid;
+    align-items: center;
+}
