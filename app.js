@@ -21,7 +21,7 @@ const API_KEY = '9f1d66f984eff1d963ba3dfeca9d0611';
 findUserLocation();
 function findUserLocation() {
     navigator.geolocation.getCurrentPosition((success) => {
-        // console.log(success);
+        console.log(success);
         let{latitude, longitude} = success.coords;
 
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`)
