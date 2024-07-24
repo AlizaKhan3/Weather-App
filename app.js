@@ -44,15 +44,13 @@ function findWeatherByCity(city) {
             icon.style.background = `url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
             showWeatherData(data);
         })
-}
 
-const inputBar = document.getElementById('userLocation');
 
-inputBar.addEventListener('input', (e) => {
-    const city = e.target.value;
-    findWeatherByCity(city);
-});
-function showWeatherData(data) {
+
+
+
+
+        function showWeatherData(data) {
     let { weather, main, wind, sys, name } = data;
     let { description } = weather[0];
     let { temp, feels_like, humidity, pressure } = main;
@@ -106,6 +104,69 @@ function showWeatherData(data) {
                     </div>
                 </div>`
 }
+}
+
+const inputBar = document.getElementById('userLocation');
+
+inputBar.addEventListener('input', (e) => {
+    const city = e.target.value;
+    findWeatherByCity(city);
+});
+
+// function showWeatherData(data) {
+//     let { weather, main, wind, sys, name } = data;
+//     let { description } = weather[0];
+//     let { temp, feels_like, humidity, pressure } = main;
+//     let { speed } = wind;
+//     let { sunrise, sunset } = sys;
+//     // let { all } = weather;
+//     weatherIcon.innerHTML = `<h3 class="temperature"> ${temp}</h3>
+//                 <div class="feelsLike"> ${feels_like}</div>
+//                 <div class="description"> ${description}</div>
+//                 <div class="city"> ${name}</div>`
+
+//     updates.innerHTML = ` <div class="card p-4" style="width: 18rem;">
+//                     <h5 class="card-text humidity">Humidity</h5>
+//                     <i class="fa-solid fa-water" style="color: rgba(245, 245, 245, 0.865);"></i>
+//                     <div class="card-body">
+//                         <h1 class="card-title" id="HumidityValue" style="color: #000;" >${humidity}</h1>
+//                     </div>
+//                 </div>
+//                 <div class="card p-4" style="width: 18rem;">
+//                     <h5 class="card-text humidity">Wind Speed</h5>
+//                     <i class="fa-solid fa-wind" style="color: darkcyan;"></i>
+//                     <div class="card-body">
+//                         <h1 class="card-title" id="windSpeedValue">${speed}</h1>
+//                     </div>
+//                 </div>
+//                 <div class="card p-2" style="width: 18rem;">
+//                     <div class="card-body sun">
+//                         <span class="my-3">
+//                             <i class="fa-solid fa-sun" style="color: #f6d245;"></i>
+//                             <p><span class="card-title" id="sunRiseValue">${moment(sunrise * 1000).format('HH:mm a')}</span>Sunrise</p>
+//                         </span>
+//                         <span class="my-3">
+//                             <i class="fa-solid fa-cloud-sun" style="color: #f6d245;"></i>
+//                             <p><span class="card-title" id="sunSetValue">${moment(sunset * 1000).format('HH:mm a')}</span>Sunset</p>
+//                         </span>
+//                     </div>
+//                 </div>
+//                 <div class="card p-4" style="width: 18rem;">
+//                     <h5 class="card-text clouds">Clouds</h5>
+//                     <i class="fa-solid fa-cloud" style="color: grey;"></i>
+//                     <div class="card-body">
+//                         <h1 class="card-title" id="cloudValue">${weather[0].clouds}%</h1>
+//                     </div>
+//                 </div>
+                
+//                 <div class="card p-4" style="width: 18rem;">
+//                     <h5 class="card-text pressure">Pressure</h5>
+//                     <i class="fa-solid fa-volcano" style="color: darkslategrey;"></i>
+//                     <div class="card-body">
+//                         <h1 class="card-title" id="pressureValue">${pressure}</h1>
+//                     </div>
+//                 </div>`
+// }
 
 
 
