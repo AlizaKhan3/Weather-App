@@ -15,6 +15,9 @@ const uvValue = document.getElementById("uvValue");
 const pressureValue = document.getElementById("pressureValue");
 const forecast = document.querySelector(".forecast")
 const updates = document.querySelector(".updates");
+const icon = document.querySelector(".icon");
+
+
 
 const API_KEY = '9f1d66f984eff1d963ba3dfeca9d0611';
 
@@ -26,31 +29,29 @@ function findUserLocation() {
         // city.innerHTML = data.name + "," + data.sys.country;
 
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`)
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-
-                function findWeatherByCity(city) {
-                    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            // console.log(data);
-                            showWeatherData(data);
-                        })
-                }
-
-                const inputBar = document.getElementById('userLocation');
-
-                inputBar.addEventListener('input', (e) => {
-                    const city = e.target.value;
-                    findWeatherByCity(city);
-                    weatherIcon.style.image = `url(https://openweathermap.org/img/wn/10d@2x.png)`
-                });
-                // showWeatherData(data);
+           .then(res => res.json())
+           .then(data => {
+                showWeatherData(data);
             })
     })
 }
 
+function findWeatherByCity(city) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
+       .then(res => res.json())
+       .then(data => {
+            console.log(data);
+            icon.style.background = `url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
+            showWeatherData(data);
+        })
+}
+
+const inputBar = document.getElementById('userLocation');
+
+inputBar.addEventListener('input', (e) => {
+    const city = e.target.value;
+    findWeatherByCity(city);
+});
 function showWeatherData(data) {
     let { weather, main, wind, sys, name } = data;
     let { description } = weather[0];
@@ -58,13 +59,10 @@ function showWeatherData(data) {
     let { speed } = wind;
     let { sunrise, sunset } = sys;
     // let { all } = weather;
-    weatherIcon.innerHTML = ` <h2 class="temperature"> ${temp}</h2>
+    weatherIcon.innerHTML = `<h3 class="temperature"> ${temp}</h3>
                 <div class="feelsLike"> ${feels_like}</div>
                 <div class="description"> ${description}</div>
-                <hr>
                 <div class="city"> ${name}</div>`
-
-
 
     updates.innerHTML = ` <div class="card p-4" style="width: 18rem;">
                     <h5 class="card-text humidity">Humidity</h5>
