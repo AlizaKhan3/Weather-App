@@ -88,3 +88,15 @@ body{
     align-items: center;
     gap: 30px;
 }
+
+.icon{
+    /* background-color: brown; */
+    background-position: 50% !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    /* display: block; */
+    height: 45%;
+    size: 2000px;
+    margin: 2rem auto;
+
+}
