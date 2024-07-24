@@ -17,17 +17,14 @@ const forecast = document.querySelector(".forecast")
 const updates = document.querySelector(".updates");
 const icon = document.querySelector(".icon");
 
-
-
 const API_KEY = '9f1d66f984eff1d963ba3dfeca9d0611';
 
 findUserLocation();
+
 function findUserLocation() {
     navigator.geolocation.getCurrentPosition((success) => {
         console.log(success);
         let { latitude, longitude } = success.coords;
-        // city.innerHTML = data.name + "," + data.sys.country;
-
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`)
            .then(res => res.json())
            .then(data => {
@@ -36,27 +33,53 @@ function findUserLocation() {
     })
 }
 
+// function findWeatherByCity(city) {
+//     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
+//        .then(res => res.json())
+//        .then(data => {
+//             console.log(data);
+//             icon.style.background = `url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
+//             showWeatherData(data);
+//         })
+// }
 function findWeatherByCity(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
-       .then(res => res.json())
-       .then(data => {
-            console.log(data);
-            icon.style.background = `url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
-            showWeatherData(data);
-        })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`API error: ${res.status} ${res.statusText}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (data.weather) {
+          // Process the weather data
+          icon.style.background = `url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
+          showWeatherData(data);
+        } else {
+          // Handle the error
+          console.error(`Error: ${data.message}`);
+          // Display an error message to the user
+          alert(`Error: ${data.message}`);
+        }
+      })
+      .catch(error => {
+        console.error(`Error: ${error.message}`);
+        // Display an error message to the user
+        alert(`Error: ${error.message}`);
+      });
+  }
 
 
 
 
 
 
-        function showWeatherData(data) {
+function showWeatherData(data) {
     let { weather, main, wind, sys, name } = data;
     let { description } = weather[0];
     let { temp, feels_like, humidity, pressure } = main;
     let { speed } = wind;
     let { sunrise, sunset } = sys;
-    // let { all } = weather;
     weatherIcon.innerHTML = `<h3 class="temperature"> ${temp}</h3>
                 <div class="feelsLike"> ${feels_like}</div>
                 <div class="description"> ${description}</div>
@@ -95,7 +118,6 @@ function findWeatherByCity(city) {
                         <h1 class="card-title" id="cloudValue">${weather[0].clouds}%</h1>
                     </div>
                 </div>
-                
                 <div class="card p-4" style="width: 18rem;">
                     <h5 class="card-text pressure">Pressure</h5>
                     <i class="fa-solid fa-volcano" style="color: darkslategrey;"></i>
@@ -103,7 +125,6 @@ function findWeatherByCity(city) {
                         <h1 class="card-title" id="pressureValue">${pressure}</h1>
                     </div>
                 </div>`
-}
 }
 
 const inputBar = document.getElementById('userLocation');
@@ -166,59 +187,4 @@ inputBar.addEventListener('input', (e) => {
 //                         <h1 class="card-title" id="pressureValue">${pressure}</h1>
 //                     </div>
 //                 </div>`
-// }
-
-
-
-
-
-
-
-
-// let finduserLoaction = (() => {
-//     fetch(WEATHER_API_ENDPOINT + userLocation.value)
-//     .then((res) => res.json())
-//     .then((data) => {
-//         if(data.cod!='' && data.cod!=200){
-//             alert(data.message);
-//             return;
-//         }
-//         console.log(data);
-//         fetch(WEATHER_DATA_ENDPOINT + `lon=${data.coord.lon}&lat=${data.coord.lat}`)
-//         .then((res) => res.json())
-//         .then((data) => {
-//             console.log(data);
-//         });
-//     });
-// });
-// finduserLoaction();
-
-
-
-
-
-
-
-
-
-// const WEATHER_API_ENDPOINT = "https://api.openweathermap.org/data/2.5/weather";
-// const WEATHER_DATA_ENDPOINT = "https://api.openweathermap.org/data/2.5/onecall";
-
-// function findUserLocation(){
-//     const apiUrl = `${WEATHER_API_ENDPOINT}?q=${userLocation.value}&appid=af9ee1243c88a0dceb4152ee480f69d6`;
-//     fetch(apiUrl)
-//    .then((res) => res.json())
-//    .then((data) => {
-//         if(data.cod!='' && data.cod!=200){
-//             alert(data.message);
-//             return;
-//         }
-//         console.log(data);
-//         const weatherDataUrl = `${WEATHER_DATA_ENDPOINT}?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=af9ee1243c88a0dceb4152ee480f69d6&exclude=minutely&units=metrics`;
-//         fetch(weatherDataUrl)
-//        .then((res) => res.json())
-//        .then((data) => {
-//             console.log(data);
-//         });
-//     });
 // }
