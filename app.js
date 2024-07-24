@@ -42,37 +42,6 @@ function findUserLocation() {
 //             showWeatherData(data);
 //         })
 // }
-function findWeatherByCity(city) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`API error: ${res.status} ${res.statusText}`);
-        }
-        return res.json();
-      })
-      .then(data => {
-        if (data.weather) {
-          // Process the weather data
-          icon.style.background = `url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
-          showWeatherData(data);
-        } else {
-          // Handle the error
-          console.error(`Error: ${data.message}`);
-          // Display an error message to the user
-          alert(`Error: ${data.message}`);
-        }
-      })
-      .catch(error => {
-        console.error(`Error: ${error.message}`);
-        // Display an error message to the user
-        alert(`Error: ${error.message}`);
-      });
-  }
-
-
-
-
-
 
 function showWeatherData(data) {
     let { weather, main, wind, sys, name } = data;
@@ -188,3 +157,11 @@ inputBar.addEventListener('input', (e) => {
 //                     </div>
 //                 </div>`
 // }
+
+
+
+
+
+
+
+
