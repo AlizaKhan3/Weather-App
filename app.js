@@ -64,11 +64,11 @@ function showWeatherData(data){
                     <div class="card-body sun">
                         <span class="my-3">
                             <i class="fa-solid fa-sun" style="color: #f6d245;"></i>
-                            <p><span class="card-title" id="sunRiseValue">${sunrise}</span>Sunrise</p>
+                            <p><span class="card-title" id="sunRiseValue">${moment(sunrise*1000).format('HH:mm a')}</span>Sunrise</p>
                         </span>
                         <span class="my-3">
                             <i class="fa-solid fa-cloud-sun" style="color: #f6d245;"></i>
-                            <p><span class="card-title" id="sunSetValue">${sunset}</span>Sunset</p>
+                            <p><span class="card-title" id="sunSetValue">${moment(sunset*1000).format('HH:mm a')}</span>Sunset</p>
                         </span>
                     </div>
                 </div>
@@ -89,6 +89,7 @@ function showWeatherData(data){
                 </div>`
 }
 
+console.log(window.moment);
 
 // const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Seattle';
 // const options = {
